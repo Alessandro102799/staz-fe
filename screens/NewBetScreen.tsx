@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
-import colors from "../../shared/constants/colors";
+import colors from "../shared/constants/colors";
 
-export default function ReportScreen() {
+export default function NewBetScreen() {
     return (
         <View style={styles.container}></View>
     )

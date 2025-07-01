@@ -10,13 +10,16 @@ export default function useGetUser() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
 
+  console.log(process.env.EXPO_PUBLIC_IP_ADDRESS_BE);
+
   useFocusEffect(
     useCallback(() => {
       let isMounted = true;
       setLoading(true);
       setError(null);
 
-      axios.get('http://192.168.0.109:3000/user')
+      axios
+        .get(`http://${process.env.EXPO_PUBLIC_IP_ADDRESS_BE}:3000/user`)
         .then(response => {
           if (isMounted) {
             const mapped = response.data.map(DTOToModel);
@@ -37,7 +40,7 @@ export default function useGetUser() {
       return () => {
         isMounted = false;
       };
-    }, [])
+    }, []),
   );
 
   return { user, loading, error };

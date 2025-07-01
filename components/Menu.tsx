@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./Screen/HomeScreen";
-import NewBetScreen from "./Screen/NewBetScreen";
-import ReportScreen from './Screen/ReportScreen';
-import StatsScreen from './Screen/StatsScreen';
+import HomeScreen from '../screens/HomeScreen';
+import NewBetScreen from '../screens/NewBetScreen';
+import ReportScreen from '../screens/ReportScreen';
+import StatsScreen from '../screens/StatsScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import colors from '../shared/constants/colors';
 import CustomTabBar from './CustomTabBar';
-import InfoScreen from './Screen/InfoScreen';
+import InfoScreen from '../screens/InfoScreen';
 
 const Tab = createBottomTabNavigator();
 

@@ -16,7 +16,10 @@ export default function useGetInProgress() {
       setLoading(true);
       setError(null);
 
-      axios.get('http://192.168.0.109:3000/bets/in-progress')
+      axios
+        .get(
+          `http://${process.env.EXPO_PUBLIC_IP_ADDRESS_BE}:3000/bets/in-progress`,
+        )
         .then(response => {
           if (isMounted) {
             const mapped = response.data.map(DTOToModel);

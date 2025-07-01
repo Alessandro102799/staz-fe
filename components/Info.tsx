@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import colors from "../shared/constants/colors";
-import UserIcon from '../assets/icons/user.svg';
+import UserIcon from '../assets/icons/user-icon.svg';
 import useGetUser from "../api/user/useGetUser";
 
 export default function Info() {

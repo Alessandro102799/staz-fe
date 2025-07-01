@@ -16,7 +16,10 @@ export default function useGetLastMonth() {
       setLoading(true);
       setError(null);
 
-      axios.get('http://192.168.0.109:3000/bets/last-month')
+      axios
+        .get(
+          `http://${process.env.EXPO_PUBLIC_IP_ADDRESS_BE}:3000/bets/last-month`,
+        )
         .then(response => {
           if (isMounted) {
             const mapped = response.data.map(DTOToModel);
