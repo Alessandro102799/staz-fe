@@ -12,16 +12,20 @@ import HomeIcon from '../assets/icons/home.svg';
 import PlusIcon from '../assets/icons/plus.svg';
 import ReportIcon from '../assets/icons/report.svg';
 import StatsIcon from '../assets/icons/stats.svg';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 const TAB_WIDTH = width / 4;
 const AnimatedPath = Animated.createAnimatedComponent(Path);
+
+const EditIcon = (props: any) => <MaterialIcons name="edit" {...props} />;
 
 const tabs = [
   { name: 'Home', label: 'Home', icon: HomeIcon },
   { name: 'NewBet', label: 'NewBet', icon: PlusIcon },
   { name: 'Report', label: 'Report', icon: ReportIcon },
   { name: 'Stats', label: 'Stats', icon: StatsIcon },
+  { name: 'Edit', label: 'Edit', icon: EditIcon },
 ];
 
 const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {

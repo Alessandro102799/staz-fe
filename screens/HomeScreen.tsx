@@ -105,7 +105,7 @@ export default function HomeScreen() {
       </View>
       <Text
         style={{
-          color: colors.light_gray,
+          color: colors.light_grey,
           fontFamily: 'Montserrat-Regular',
           paddingTop: 10,
           paddingBottom: 10,
@@ -148,7 +148,7 @@ export default function HomeScreen() {
                   flex: 0.3,
                   textAlign: 'center',
                   fontFamily: 'Montserrat-Regular',
-                  color: colors.light_gray,
+                  color: colors.light_grey,
                 }}
               >
                 {formatDate(new Date(bet.data))}
@@ -168,7 +168,7 @@ export default function HomeScreen() {
                       width: 40,
                       height: 40,
                       borderWidth: 3,
-                      borderColor: colors.light_gray,
+                      borderColor: colors.light_grey,
                       borderRadius: 50,
                       justifyContent: 'center',
                       alignItems: 'center',
@@ -195,7 +195,7 @@ export default function HomeScreen() {
                     style={{
                       fontFamily: 'Montserrat-Regular',
                       fontSize: 12,
-                      color: colors.light_gray,
+                      color: colors.light_grey,
                     }}
                   >
                     Stake:{' '}
@@ -208,7 +208,7 @@ export default function HomeScreen() {
                     style={{
                       fontFamily: 'Montserrat-Regular',
                       fontSize: 12,
-                      color: colors.light_gray,
+                      color: colors.light_grey,
                     }}
                   >
                     Amount:{' '}
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
 
   container_data: {
     flexDirection: 'row',
-    backgroundColor: colors.super_light_gray,
+    backgroundColor: colors.super_light_grey,
     borderRadius: 20,
     width: '100%',
     marginTop: 10,
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.light_gray,
+    color: colors.light_grey,
     fontSize: 12,
     fontFamily: 'Montserrat-Regular',
   },
@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.super_light_gray,
+    backgroundColor: colors.super_light_grey,
   },
 
   delete: {

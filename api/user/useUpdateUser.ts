@@ -1,15 +1,13 @@
 // src/hooks/useAllBets.ts
-import { useState, useCallback } from 'react';
-import axios from 'axios';
 import { useFocusEffect } from '@react-navigation/native';
+import axios from 'axios';
+import { useCallback, useState } from 'react';
+import { DTOToModel, ModelToDTO } from '../../shared/mapper/user.mapper';
 import { UserModel } from '../../shared/model/user.model';
-import { DTOToModel } from '../../shared/mapper/user.mapper';
 
-export default function useGetUser() {
-  const [user, setUser] = useState<UserModel>();
+export default function useUpdateUser(user: UserModel) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
-
 
   useFocusEffect(
     useCallback(() => {
@@ -18,13 +16,10 @@ export default function useGetUser() {
       setError(null);
 
       axios
-        .get(`http://${process.env.EXPO_PUBLIC_IP_ADDRESS_BE}:3000/user`)
-        .then(response => {
-          if (isMounted) {
-            const mapped = response.data.map(DTOToModel);
-            setUser(mapped[0]);
-          }
-        })
+        .put(
+          `http://${process.env.EXPO_PUBLIC_IP_ADDRESS_BE}:3000/user/${user.id}`,
+          ModelToDTO(user),
+        )
         .catch(err => {
           if (isMounted) {
             setError(err);

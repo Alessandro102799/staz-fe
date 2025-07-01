@@ -23,27 +23,27 @@ export default function Info() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        height: 60,
-        alignItems: 'center',
-        flexDirection: 'row'
-    },
+  container: {
+    height: 60,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
 
-    box_icon: {
-        width: 50,
-        height: 50,
-        borderRadius: 50,
-        backgroundColor: colors.light_green
-    },
+  box_icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    backgroundColor: colors.light_green,
+  },
 
-    title: {
-        fontSize: 20,
-        fontFamily: 'Montserrat-SemiBold',
-        color: colors.black
-    },
+  title: {
+    fontSize: 20,
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.black,
+  },
 
-    subtitle: {
-        fontFamily: 'Montserrat-Regular',
-        color: colors.light_gray
-    }
-})
+  subtitle: {
+    fontFamily: 'Montserrat-Regular',
+    color: colors.light_grey,
+  },
+});
