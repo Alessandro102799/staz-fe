@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
 
   subtitle: {
     fontFamily: 'Montserrat-Regular',
-    color: colors.light_grey,
+    color: colors.light_gray,
   },
 });

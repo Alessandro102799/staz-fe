@@ -53,7 +53,7 @@ export default function Budget() {
                 fontSize: 12,
               }}
             >
-              Modifica Budget
+              Edit Budget
             </Text>
           </TouchableOpacity>
         </View>
@@ -61,7 +61,7 @@ export default function Budget() {
           style={{
             fontFamily: 'Montserrat-SemiBold',
             fontSize: 36,
-            color: colors.green,
+            color: user.currentBudget >= user.initialBudget ? colors.green : colors.red,
           }}
         >
           €
@@ -71,7 +71,7 @@ export default function Budget() {
           <Text
             style={{
               fontFamily: 'Montserrat-Regular',
-              color: colors.green,
+              color: user.currentBudget >= user.initialBudget ? colors.green : colors.red,
               fontSize: 14,
             }}
           >
@@ -116,7 +116,7 @@ export default function Budget() {
             style={{
               fontFamily: 'Montserrat-Regular',
               fontSize: 12,
-              color: colors.light_grey,
+              color: colors.light_gray,
             }}
           >
             €{user.initialBudget.toFixed(2).replace('.', ',')} initial budget
@@ -125,7 +125,7 @@ export default function Budget() {
             style={{
               fontFamily: 'Montserrat-Regular',
               fontSize: 12,
-              color: colors.light_grey,
+              color: colors.light_gray,
             }}
           >
             €

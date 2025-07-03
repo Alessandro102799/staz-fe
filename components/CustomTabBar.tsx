@@ -20,12 +20,15 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 const EditIcon = (props: any) => <MaterialIcons name="edit" {...props} />;
 
+const EditBetIcon = (props: any) => <MaterialIcons name="edit" {...props} />;
+
 const tabs = [
   { name: 'Home', label: 'Home', icon: HomeIcon },
   { name: 'NewBet', label: 'NewBet', icon: PlusIcon },
   { name: 'Report', label: 'Report', icon: ReportIcon },
   { name: 'Stats', label: 'Stats', icon: StatsIcon },
   { name: 'Edit', label: 'Edit', icon: EditIcon },
+  { name: 'EditBet', label: 'EditBet', icon: EditBetIcon },
 ];
 
 const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {

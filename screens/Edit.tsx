@@ -48,7 +48,7 @@ export default function Edit() {
             <TextInput
               style={styles.input}
               placeholder="Change username"
-              placeholderTextColor={colors.light_grey}
+              placeholderTextColor={colors.light_gray}
             ></TextInput>
           </View>
 
@@ -58,7 +58,7 @@ export default function Edit() {
             <TextInput
               style={styles.input}
               placeholder="Insert initial budget"
-              placeholderTextColor={colors.light_grey}
+              placeholderTextColor={colors.light_gray}
             ></TextInput>
           </View>
 
@@ -68,13 +68,12 @@ export default function Edit() {
             <TextInput
               style={styles.input}
               placeholder="Insert goal budget"
-              placeholderTextColor={colors.light_grey}
+              placeholderTextColor={colors.light_gray}
             ></TextInput>
           </View>
 
           <TouchableOpacity
             style={styles.saveButton}
-            onPress={() => console.log('')}
           >
             <Text style={styles.saveButtonText}>Save</Text>
           </TouchableOpacity>
@@ -99,8 +98,9 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     color: colors.black,
-    fontSize: 18,
+    fontSize: 14,
     marginLeft: 5,
+    fontFamily: 'Montserrat-Regular',
   },
 
   inputRow: {
@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 15,
     marginVertical: 8,
-    backgroundColor: colors.super_light_grey,
-    borderColor: colors.super_light_grey,
+    backgroundColor: colors.super_light_gray,
+    borderColor: colors.super_light_gray,
   },
 
   separator: {
@@ -127,14 +127,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
     width: '100%',
     height: '90%',
-    borderRadius: 15,
+    borderRadius: 10,
     justifyContent: 'center',
     marginVertical: 8,
   },
 
   saveButtonText: {
     color: colors.white,
-    fontSize: 18,
+    fontSize: 14,
+    fontFamily: 'Montserrat-SemiBold',
     textAlign: 'center',
   },
 });

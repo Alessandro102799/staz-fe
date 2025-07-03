@@ -11,12 +11,12 @@ import useAllBets from '../api/bet/useGetAll';
 import useGetInProgress from '../api/bet/useGetInProgress';
 import useGetLastMonth from '../api/bet/useGetLastMonth';
 import useGetLastWeek from '../api/bet/useGetLastWeek';
-import TennisIcon from '../assets/icons/basket.svg';
+import TennisIcon from '../assets/icons/tennis.svg';
 import DeleteIcon from '../assets/icons/delete.svg';
 import EditIcon from '../assets/icons/edit.svg';
 import FootballIcon from '../assets/icons/football.svg';
 import OtherIcon from '../assets/icons/other.svg';
-import BasketIcon from '../assets/icons/tennis.svg';
+import BasketIcon from '../assets/icons/basket.svg';
 import colors from '../shared/constants/colors';
 import { BetResult } from '../shared/enum/result.enum';
 import { Sport } from '../shared/enum/sport.enum';
@@ -24,27 +24,20 @@ import { formatDate } from '../shared/utility/formatDate';
 import { capitalizeFirstLetter } from '../shared/utility/letter';
 import Budget from '../components/Budget';
 import Info from '../components/Info';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { TabParamList } from '../components/Menu';
 
 export default function HomeScreen() {
   const [selected, setSelected] = useState(0);
   const options = ['All', 'In progress', 'Last week', 'Last month'];
-  const { bets: allBets, loading: loadingAll, error: errorAll } = useAllBets();
-  const {
-    bets: inProgressBets,
-    loading: loadingProgress,
-    error: errorProgress,
-  } = useGetInProgress();
-  const {
-    bets: lastWeekBets,
-    loading: loadingWeek,
-    error: errorWeek,
-  } = useGetLastWeek();
-  const {
-    bets: lastMonthBets,
-    loading: loadingMonth,
-    error: errorMonth,
-  } = useGetLastMonth();
 
+  const { bets: allBets, loading: loadingAll, error: errorAll } = useAllBets();
+  const { bets: inProgressBets, loading: loadingProgress, error: errorProgress} = useGetInProgress();
+  const { bets: lastWeekBets, loading: loadingWeek, error: errorWeek } = useGetLastWeek();
+  const { bets: lastMonthBets, loading: loadingMonth, error: errorMonth } = useGetLastMonth();
+
+  const navigation = useNavigation<NavigationProp<TabParamList>>();
+  
   const getSelectedBets = () => {
     switch (selected) {
       case 0:
@@ -105,7 +98,7 @@ export default function HomeScreen() {
       </View>
       <Text
         style={{
-          color: colors.light_grey,
+          color: colors.light_gray,
           fontFamily: 'Montserrat-Regular',
           paddingTop: 10,
           paddingBottom: 10,
@@ -118,21 +111,15 @@ export default function HomeScreen() {
           {bets.length} bets
         </Text>
       </Text>
-      <FlatList
+      {bets.length > 0 ? <FlatList
         data={bets}
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false} //
         renderItem={({ item: bet }) => (
-          <SwipeRow rightOpenValue={-110} style={{ marginBottom: 10 }}>
+          <SwipeRow rightOpenValue={-110} style={{ marginBottom: 10 }} onRowPress={() => navigation.navigate('EditBet', {id: bet.id ?? 0})}>
             {/* BACK (Edit + Delete) */}
             <View style={styles.container_swipe}>
-              <TouchableOpacity
-                style={styles.edit}
-                onPress={() => console.log('Edit')}
-              >
-                <EditIcon />
-              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.delete}
                 onPress={() => console.log('Delete')}
@@ -148,7 +135,7 @@ export default function HomeScreen() {
                   flex: 0.3,
                   textAlign: 'center',
                   fontFamily: 'Montserrat-Regular',
-                  color: colors.light_grey,
+                  color: colors.light_gray,
                 }}
               >
                 {formatDate(new Date(bet.data))}
@@ -168,7 +155,7 @@ export default function HomeScreen() {
                       width: 40,
                       height: 40,
                       borderWidth: 3,
-                      borderColor: colors.light_grey,
+                      borderColor: colors.light_gray,
                       borderRadius: 50,
                       justifyContent: 'center',
                       alignItems: 'center',
@@ -195,7 +182,7 @@ export default function HomeScreen() {
                     style={{
                       fontFamily: 'Montserrat-Regular',
                       fontSize: 12,
-                      color: colors.light_grey,
+                      color: colors.light_gray,
                     }}
                   >
                     Stake:{' '}
@@ -208,7 +195,7 @@ export default function HomeScreen() {
                     style={{
                       fontFamily: 'Montserrat-Regular',
                       fontSize: 12,
-                      color: colors.light_grey,
+                      color: colors.light_gray,
                     }}
                   >
                     Amount:{' '}
@@ -245,7 +232,7 @@ export default function HomeScreen() {
             </View>
           </SwipeRow>
         )}
-      />
+      /> : <Text style={{fontSize: 16, fontFamily: 'Montserrat-Regular', color: colors.light_gray, textAlign: 'center'}}>Matches not found!</Text>}
     </View>
   );
 }
@@ -259,7 +246,7 @@ const styles = StyleSheet.create({
 
   container_data: {
     flexDirection: 'row',
-    backgroundColor: colors.super_light_grey,
+    backgroundColor: colors.super_light_gray,
     borderRadius: 20,
     width: '100%',
     marginTop: 10,
@@ -291,7 +278,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.light_grey,
+    color: colors.light_gray,
     fontSize: 12,
     fontFamily: 'Montserrat-Regular',
   },
@@ -325,19 +312,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 
-  edit: {
-    height: '100%',
-    width: 50,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.super_light_grey,
-  },
-
   delete: {
     height: '100%',
-    width: 50,
+    width: 100,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     justifyContent: 'center',
